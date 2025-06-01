@@ -1,6 +1,7 @@
+import { Message } from 'ai';
 import React from 'react';
 
-const ChatBubble = ({ message }) => {
+const ChatBubble = ({ message }: { message: Message }) => {
   const { content, role } = message;
 
   return (

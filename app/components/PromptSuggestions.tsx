@@ -1,7 +1,11 @@
 import React from 'react';
 import PromptSuggestionButton from './PromptSuggestionButton';
 
-const PromptSuggestions = ({ onPromptClick }) => {
+const PromptSuggestions = ({
+  onPromptClick,
+}: {
+  onPromptClick: (prompt: string) => void;
+}) => {
   const prompts = [
     'Who won the Formula 1 in 2024?',
     'What is the fastest lap in Formula 1 history?',
@@ -15,7 +19,7 @@ const PromptSuggestions = ({ onPromptClick }) => {
 
   return (
     <div className="flex flex-wrap gap-2 mt-4 justify-center">
-      {prompts.map((prompt, index) => (
+      {prompts.map((prompt: string, index: number) => (
         <div
           key={index}
           className={`${index > 2 ? 'hidden md:block' : ''}`}>
