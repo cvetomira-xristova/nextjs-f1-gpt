@@ -1,40 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# F1 GPT - Your Formula 1 AI Assistant 🏎️
 
-## Getting Started
+A Next.js based Formula 1 chatbot powered by GPT-4 that uses retrieval-augmented generation (RAG) to provide more up-to-date answers about F1 racing. The system combines OpenAI's language models with a curated knowledge base of Formula 1 data, ensuring responses are both contextually relevant and current with the latest F1 information.
 
-First, run the development server:
+## AI Model Details 🧠
+
+- **Chat Model**: gpt-4o by OpenAI
+- **Embedding Model**: text-embedding-3-small by OpenAI
+- **Knowledge Cutoff**: Oct 01, 2023
+- **Enhanced with Formula 1 Data from**:
+
+  - Official Formula 1 website (formula1.com)
+  - Wikipedia F1 articles (2022-2025 seasons)
+  - Forbes F1 coverage
+
+## Tech Stack 💻
+
+- **Frontend**: Next.js, TypeScript, Tailwind CSS
+- **AI**: OpenAI API for embeddings and chat
+- **Database**: Astra DB (Vector Database)
+
+## Getting started 🏁
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/nextjs-f1-gpt.git
+cd nextjs-f1-gpt
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. Set up environment variables:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- Create a .env.local file
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+touch .env.local
+```
 
-## Learn More
+- Add your credentials
 
-To learn more about Next.js, take a look at the following resources:
+```OPENAI_API_KEY=your_key
+ASTRA_DB_NAMESPACE=your_namespace
+ASTRA_DB_COLLECTION=your_collection
+ASTRA_DB_API_ENDPOINT=your_endpoint
+ASTRA_DB_APPLICATION_TOKEN=your_token
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+4. Load F1 data into vector database:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+npm run seed
+```
 
-## Deploy on Vercel
+5. Start the development server:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Your F1 GPT should be running at [http://localhost:3000](http://localhost:3000) 🏎️
