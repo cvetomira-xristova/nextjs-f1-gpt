@@ -42,7 +42,7 @@ npm install
 touch .env.local
 ```
 
-- Add your credentials
+- Add your env variables
 
 ```OPENAI_API_KEY=your_key
 ASTRA_DB_NAMESPACE=your_namespace
@@ -64,3 +64,9 @@ npm run dev
 ```
 
 Your F1 GPT should be running at [http://localhost:3000](http://localhost:3000) 🏎️
+
+## Live Demo 🚀
+
+Check out the live demo at [https://tsvetomira-hristova-f1chatbot.netlify.app](https://tsvetomira-hristova-f1chatbot.netlify.app)
+
+![F1 GPT conversation interface showing prompts suggestions to startup a cat the AI assistant about F1 racing](image.png)
