@@ -30,6 +30,14 @@ const f1Data = [
   'https://www.forbes.com/sites/brettknight/2024/12/10/formula-1s-highest-paid-drivers-2024/',
 ];
 
+if (!ASTRA_DB_API_ENDPOINT) {
+  throw new Error('ASTRA_DB_API_ENDPOINT environment variable is not set');
+}
+
+if (!ASTRA_DB_COLLECTION) {
+  throw new Error('ASTRA_DB_COLLECTION environment variable is not set');
+}
+
 const client = new DataAPIClient(ASTRA_DB_APPLICATION_TOKEN);
 const db = client.db(ASTRA_DB_API_ENDPOINT, { keyspace: ASTRA_DB_NAMESPACE });
 
