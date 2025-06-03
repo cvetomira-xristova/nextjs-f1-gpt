@@ -16,18 +16,18 @@ const ChatInput = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full mt-8">
-      <div className="flex gap-2">
+      className="sticky bottom-0 backdrop-blur-sm w-full">
+      <div className="flex gap-2 max-w-3xl mx-auto">
         <input
           value={input}
-          className="w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none cursor-text"
+          className="w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-2xl cursor-text focus:outline-none"
           type="text"
           placeholder="Ask an F1 question..."
           onChange={handleInputChange}
         />
         <button
           type="submit"
-          className="p-3 text-white bg-stone-900 rounded-full hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors hover:cursor-pointer">
+          className="p-3 text-white bg-stone-900 rounded-full hover:bg-red-700">
           <Image
             src={chatIcon}
             alt="Chat Icon"

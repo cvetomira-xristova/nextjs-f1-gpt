@@ -9,7 +9,7 @@ const PromptSuggestionButton = ({
 }) => {
   return (
     <button
-      className="px-4 py-2 text-sm text-white bg-red-600 rounded-lg 
+      className="px-4 py-2 text-xs sm:text-lg text-white bg-red-600 rounded-lg 
       hover:bg-red-700 focus:outline-none cursor-pointer"
       onClick={onClick}>
       {text}
