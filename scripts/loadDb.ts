@@ -15,6 +15,10 @@ const {
   OPENAI_API_KEY,
 } = process.env;
 
+if (!ASTRA_DB_API_ENDPOINT || !ASTRA_DB_NAMESPACE || !ASTRA_DB_COLLECTION) {
+  throw new Error('Missing required environment variables');
+}
+
 const openai = new OpenAI({
   apiKey: OPENAI_API_KEY,
 });
@@ -29,14 +33,6 @@ const f1Data = [
   'https://www.formula1.com/en/racing/2024',
   'https://www.forbes.com/sites/brettknight/2024/12/10/formula-1s-highest-paid-drivers-2024/',
 ];
-
-if (!ASTRA_DB_API_ENDPOINT) {
-  throw new Error('ASTRA_DB_API_ENDPOINT environment variable is not set');
-}
-
-if (!ASTRA_DB_COLLECTION) {
-  throw new Error('ASTRA_DB_COLLECTION environment variable is not set');
-}
 
 const client = new DataAPIClient(ASTRA_DB_APPLICATION_TOKEN);
 const db = client.db(ASTRA_DB_API_ENDPOINT, { keyspace: ASTRA_DB_NAMESPACE });

@@ -11,6 +11,18 @@ const {
   OPENAI_API_KEY,
 } = process.env;
 
+if (
+  !ASTRA_DB_API_ENDPOINT ||
+  !ASTRA_DB_NAMESPACE ||
+  !ASTRA_DB_APPLICATION_TOKEN ||
+  !ASTRA_DB_COLLECTION ||
+  !OPENAI_API_KEY
+) {
+  throw new Error(
+    'Missing required environment variables for Astra DB or OpenAI'
+  );
+}
+
 const openai = new OpenAI({
   apiKey: OPENAI_API_KEY,
 });
@@ -32,11 +44,14 @@ export async function POST(req: Request) {
     });
 
     try {
-      const collection = await db.collection(ASTRA_DB_COLLECTION);
-      const cursor = collection.find(null, {
-        sort: { $vector: embedding.data[0].embedding },
-        limit: 10,
-      });
+      const collection = await db.collection(ASTRA_DB_COLLECTION!);
+      const cursor = collection.find(
+        {},
+        {
+          sort: { $vector: embedding.data[0].embedding },
+          limit: 10,
+        }
+      );
 
       const documents = await cursor.toArray();
 
