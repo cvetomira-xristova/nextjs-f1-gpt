@@ -8,13 +8,11 @@ const PromptSuggestions = ({
 }) => {
   const prompts = [
     'Who won the Formula 1 in 2024?',
+    'Who is the highest paid Formula 1 driver?',
+    'What is the most successful Formula 1 team?',
+    'What is the max pit speed limit?',
     'What is the fastest lap in Formula 1 history?',
-    'What are the top teams in Formula 1?',
-    'Who is the highes paid Formula 1 driver?',
-    'Who are the top drivers in Formula 1?',
-    'What is the history of Formula 1?',
-    'What is the role of a pit crew in Formula 1?',
-    'How do Formula 1 cars differ from regular cars?',
+    'What is the shortest Formula 1 track?',
   ];
 
   return (
@@ -22,7 +20,7 @@ const PromptSuggestions = ({
       {prompts.map((prompt: string, index: number) => (
         <div
           key={index}
-          className={`${index > 2 ? 'hidden md:block' : ''}`}>
+          className={`${index > 2 ? 'hidden sm:block' : ''}`}>
           <PromptSuggestionButton
             onClick={() => onPromptClick(prompt)}
             text={prompt}

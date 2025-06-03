@@ -16,7 +16,7 @@ const ChatInput = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="sticky bottom-0 backdrop-blur-sm w-full">
+      className="sticky bottom-0 sm:backdrop-blur-sm w-full pb-2  max-w-3xl mx-auto">
       <div className="flex gap-2 max-w-3xl mx-auto">
         <input
           value={input}

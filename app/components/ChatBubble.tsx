@@ -1,19 +1,25 @@
 import { Message } from 'ai';
-import React from 'react';
+import { forwardRef } from 'react';
 
-const ChatBubble = ({ message }: { message: Message }) => {
-  const { content, role } = message;
+const ChatBubble = forwardRef<HTMLDivElement, { message: Message }>(
+  ({ message }, ref) => {
+    const { content, role } = message;
 
-  return (
-    <div
-      className={`rounded-lg p-4 l my-2 text-xs md:text-lg ${
-        role === 'user'
-          ? 'bg-red-400 text-white ml-auto'
-          : 'bg-slate-200 text-gray-700'
-      }`}>
-      {content}
-    </div>
-  );
-};
+    return (
+      <div
+        ref={ref}
+        className={`flex p-4 text-xs sm:text-lg transition-all duration-300 ease-in-out 
+           min-w-3/4 break-words ${
+             role === 'user'
+               ? 'bg-red-400 text-white ml-auto rounded-s-xl rounded-se-xl'
+               : 'bg-slate-200 text-gray-700 rounded-e-xl rounded-es-xl'
+           }`}>
+        {content}
+      </div>
+    );
+  }
+);
+
+ChatBubble.displayName = 'ChatBubble';
 
 export default ChatBubble;

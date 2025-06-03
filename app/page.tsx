@@ -1,5 +1,5 @@
 'use client';
-
+import { useEffect, useRef } from 'react';
 import { useChat, Message } from '@ai-sdk/react';
 import ChatBubble from './components/ChatBubble';
 import LoadingIndicator from './components/LoadingIndicator';
@@ -24,11 +24,16 @@ const Home = () => {
     append(message);
   };
 
+  const bottomRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
   return (
     <>
       <div className="flex flex-col items-center justify-center w-full max-w-3xl mx-auto">
         <Header />
-
         <div className="flex flex-col items-center justify-end">
           {noMessages ? (
             <div className="flex flex-col justify-end items-center max-w-3xl mb-10">
@@ -45,12 +50,15 @@ const Home = () => {
                 <ChatBubble
                   key={`message-${index}`}
                   message={message}
+                  ref={index === messages.length - 1 ? bottomRef : null}
                 />
               ))}
             </div>
           )}
         </div>
-        {isLoading && <LoadingIndicator className="h-10" />}
+        {isLoading && (
+          <LoadingIndicator className="h-10 fixed bottom-16 sm:bottom-22 items-center " />
+        )}
       </div>
 
       <ChatInput
