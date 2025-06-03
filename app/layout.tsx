@@ -1,9 +1,14 @@
 import './global.css';
+import { Metadata } from 'next/types';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'F1GPT',
   description:
     'F1GPT is a chatbot that can answer all your Formula One questions.',
+  icons: {
+    icon: './favicon.ico',
+    apple: './apple-icon.png',
+  },
 };
 
 export default function RootLayout({
